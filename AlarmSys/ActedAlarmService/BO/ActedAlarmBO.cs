@@ -47,11 +47,20 @@ namespace ActedAlarmService
                 return null;
             }
 
-            List<ActedAlarm> alarms = this.DAL.Filter(actedAlarmFilter);
+            List<ActedAlarm> actedAlarms = this.DAL.Filter(actedAlarmFilter);
 
             this.Notifiable.StatusCode = (int)HttpStatusCode.OK;
 
-            return alarms;
+            return actedAlarms;
+
+        }
+        public List<ActedAlarmRank> GetTop3Alarms()
+        {
+            List<ActedAlarmRank> actedAlarmRank = this.DAL.GetTop3Alarms();
+
+            this.Notifiable.StatusCode = (int)HttpStatusCode.OK;
+
+            return actedAlarmRank;
 
         }
         public void Update(ActedAlarm actedAlarm)

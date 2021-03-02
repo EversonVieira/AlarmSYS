@@ -28,6 +28,11 @@ namespace AlarmSys.Controllers
         {
             return ActionResponse(Data: _ActedAlarmBO.Filter(alarmFilter), BusinessObject: _ActedAlarmBO);
         }
+        [HttpGet("get/top3")]
+        public ActionResult GetTop3Alarms()
+        {
+            return ActionResponse(Data: _ActedAlarmBO.GetTop3Alarms(), BusinessObject: _ActedAlarmBO);
+        }
         [HttpPut("update")]
         public ActionResult Update(ActedAlarm alarm)
         {

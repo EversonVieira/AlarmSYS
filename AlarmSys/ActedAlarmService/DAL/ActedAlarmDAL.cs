@@ -67,7 +67,7 @@ namespace ActedAlarmService
         }
         public List<ActedAlarm> Filter(ActedAlarmFilter actedAlarmFilter)
         {
-            List<ActedAlarm> actedAlarmFilters = new List<ActedAlarm>();
+            List<ActedAlarm> actedAlarmFiltered = new List<ActedAlarm>();
             ApiConn.DAO.AddParameter("@StartDate", actedAlarmFilter.StartDate);
             ApiConn.DAO.AddParameter("@AlarmDescription", actedAlarmFilter.AlarmDescription);
             ApiConn.DAO.AddParameter("@EndDate", actedAlarmFilter.EndDate);
@@ -88,7 +88,7 @@ namespace ActedAlarmService
             DataTable DT = ApiConn.DAO.ExecuteReader(cmd);
             foreach (DataRow row in DT.Rows)
             {
-                actedAlarmFilters.Add(new ActedAlarm
+                actedAlarmFiltered.Add(new ActedAlarm
                 {
                     Id = int.Parse(row["Id"].ToString()),
                     AlarmStatus = row["AlarmStatus"].ToString(),
@@ -101,7 +101,29 @@ namespace ActedAlarmService
 
                 });
             }
-            return actedAlarmFilters;
+            return actedAlarmFiltered;
         }
+
+        public List<ActedAlarmRank> GetTop3Alarms()
+        {
+            List<ActedAlarmRank> actedAlarmRank = new List<ActedAlarmRank>();
+            
+
+            string cmd = @"SELECT TOP(3) Id_Alarm,Count(Id_Alarm) as AlarmCount FROM Alarms_Acted
+                           GROUP BY Id_Alarm
+                           ORDER BY AlarmCount DESC";
+
+            DataTable DT = ApiConn.DAO.ExecuteReader(cmd);
+            foreach (DataRow row in DT.Rows)
+            {
+                actedAlarmRank.Add(new ActedAlarmRank
+                {
+                    Id = int.Parse(row["Id_Alarm"].ToString()),
+                    Count = int.Parse(row["AlarmCount"].ToString()),
+                });
+            }
+            return actedAlarmRank;
+        }
+
     }
 }
