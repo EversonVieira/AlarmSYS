@@ -28,6 +28,7 @@ export class EquipmentComponent implements OnInit {
     });
 
   }
+
   filter() {
     this.equipmentService.filter({
       "startDate": new Date(2000, 1, 1),
@@ -37,6 +38,7 @@ export class EquipmentComponent implements OnInit {
       this.equipments = response.data;
     })
   }
+
   delete(equipment:Equipment){
     this.equipmentService.delete(equipment).subscribe((response:any)=>{
       console.log(response);

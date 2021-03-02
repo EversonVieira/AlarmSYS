@@ -13,13 +13,14 @@ export class AlarmComponent implements OnInit {
   model:Alarm = new Alarm();
   equipments:Equipment[] = [];
   alarms:Alarm[] = [];
+
   constructor(private equipmentService:EquipmentService, private alarmService:AlarmService) { }
-  
 
   ngOnInit(): void {
     this.filterEquipments();
     this.filterAlarms();
   }
+
   filterEquipments() {
     this.equipmentService.filter({
       "startDate": new Date(2000, 1, 1),
@@ -29,6 +30,7 @@ export class AlarmComponent implements OnInit {
       this.equipments = response.data;
     })
   }
+
   filterAlarms(){
     this.alarmService.filter({
       "startDate": new Date(2000, 1, 1),
@@ -38,6 +40,7 @@ export class AlarmComponent implements OnInit {
       this.alarms = response.data;
     })
   }
+
   insert(){
     this.model.id_Classification = Number(this.model.id_Classification);
     this.model.id_Equipment = Number(this.model.id_Equipment);
@@ -50,6 +53,7 @@ export class AlarmComponent implements OnInit {
     })
 
   }
+
   delete(alarm){
     this.alarmService.delete(alarm).subscribe((response:any)=>{
       console.log(response);
@@ -60,4 +64,5 @@ export class AlarmComponent implements OnInit {
       alert("This alarm can't be removed.");
     });
   }
+  
 }

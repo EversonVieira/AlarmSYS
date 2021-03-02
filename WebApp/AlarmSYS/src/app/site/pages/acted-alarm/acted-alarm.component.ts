@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActedAlarm } from '../../models/acted-alarm';
 import { Alarm } from '../../models/alarm';
+import { AlarmRank } from '../../models/alarm-rank';
 import { ActedAlarmService } from '../../services/acted-alarm.service';
 import { AlarmService } from '../../services/alarm.service';
 
@@ -12,6 +13,7 @@ import { AlarmService } from '../../services/alarm.service';
 export class ActedAlarmComponent implements OnInit {
   rawActedAlarmsList:ActedAlarm[] = [];
   alarms:Alarm[] = [];
+  alarmRank:AlarmRank[] = [];
   filter:string = "";
   model:ActedAlarm = new ActedAlarm();
   actedAlarms:ActedAlarm[] = [];
@@ -20,7 +22,9 @@ export class ActedAlarmComponent implements OnInit {
   ngOnInit(): void {
     this.filterAlarms();
     this.filterActedAlarms();
+    this.getAlarmRank();
   }
+
   filterAlarms(){
     this.alarmService.filter({
       "startDate": new Date(2000, 1, 1),
@@ -30,16 +34,23 @@ export class ActedAlarmComponent implements OnInit {
       this.alarms = response.data;
     })
   }
+
   filterActedAlarms(){
     this.actedAlarmService.filter({
       "startDate": new Date(2000, 1, 1),
       "endDate": new Date(2022, 1, 1)
     }).subscribe((response: any) => {
-      console.log(response);
       this.rawActedAlarmsList = response.data;
       this.actedAlarms = response.data;
     })
   }
+
+  getAlarmRank(){
+    this.actedAlarmService.getTop3().subscribe((response:any)=>{
+      this.alarmRank = response.data;
+    })
+  }
+
   insert(){
     this.model.id_Alarm = Number(this.model.id_Alarm);
     this.model.id_Status = Number(this.model.id_Status);
@@ -51,6 +62,7 @@ export class ActedAlarmComponent implements OnInit {
       this.filterAlarms();
     })
   }
+
   delete(actedAlarm:ActedAlarmComponent){
     this.actedAlarmService.delete(actedAlarm).subscribe((response:any)=>{
       console.log(response);
@@ -59,9 +71,11 @@ export class ActedAlarmComponent implements OnInit {
       alert("This register can't be removed.");
     })
   }
+
   changeFilter(){
     this.actedAlarms = this.rawActedAlarmsList.filter(x => x.alarmDescription == this.filter);
   }
+  
   changeOrder(ordenator:string){
     if (ordenator == 'AlarmDescription'){
       this.actedAlarms = this.rawActedAlarmsList.sort((a,b) => a.alarmDescription.length < b.alarmDescription.length ? 1:-1)

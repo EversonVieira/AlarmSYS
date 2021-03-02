@@ -17,13 +17,33 @@
         
     </div>
     <div class="flex">
+        <div class="form-input">
+            <label>FilterBy: Alarm</label>
+            <input type="text" [(ngModel)]="filter" (ngModelChange)="changeFilter()">
+        </div>
         <div class="form-buttons">
+
             <button (click)="insert()">Registrar</button>
         </div>
     </div>
-    <div class="form-input">
-        <label>Alarm</label>
-        <input type="text" [(ngModel)]="filter" (ngModelChange)="changeFilter()">
+    
+    <div class="table">
+        <div class="header">
+            <div class="h-item">
+                <label>AlarmId</label>
+            </div>
+            <div class="h-item">
+                <label>AlarmCount</label>
+            </div>
+        </div>
+        <div class="row" *ngFor='let alarm of alarmRank'>
+            <div class="r-item">
+                <label>{{alarm.id}}</label>
+            </div>
+            <div class="r-item">
+                <label>{{alarm.count}} </label>
+            </div>
+        </div>
     </div>
     <div class="table">
         <div class="header">

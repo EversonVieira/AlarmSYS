@@ -12,6 +12,7 @@ export class ActedAlarmService {
   private FILTER:string = 'actedalarm/filter';
   private UPDATE:string = 'actedalarm/update';
   private DELETE:string = 'actedalarm/delete';
+  private GET_TOP3:string = 'actedalarm/get/top3';
 
   constructor(private httpService:HttpService) { }
   
@@ -26,5 +27,8 @@ export class ActedAlarmService {
   }
   delete(model){
     return this.httpService.delete(`${this.DELETE}/${model.id}`);
+  }
+  getTop3(){
+    return this.httpService.get(this.GET_TOP3);
   }
 }
