@@ -1,0 +1,70 @@
+<div class="register">
+    <div class="flex">
+        <div class="form-input">
+            <label>Alarm</label>
+            <select id="type" aria-placeholder="Select one alarm" [(ngModel)]="model.id">
+                <option *ngFor="let alarm of alarms" [(value)]="alarm.id">{{alarm.description}}</option>
+            </select>
+        </div>
+        <div class="form-input">
+            <label>Status</label>
+            <select id="type" aria-placeholder="Select one Status" [(ngModel)]="model.id_Status">
+                <option value =1>Atuando</option>
+                <option value =2>Resolvido</option>
+                <option value =3>Não Resolvido</option>
+            </select>
+        </div>
+        
+    </div>
+    <div class="flex">
+        <div class="form-buttons">
+            <button (click)="insert()">Registrar</button>
+        </div>
+    </div>
+    <div class="form-input">
+        <label>Alarm</label>
+        <input type="text" [(ngModel)]="filter" (ngModelChange)="changeFilter()">
+    </div>
+    <div class="table">
+        <div class="header">
+            <div class="h-item" (click)="changeOrder('AlarmDescription')">
+                <label>AlarmDescription</label>
+            </div>
+            <div class="h-item" (click)="changeOrder('EquipmentDescription')">
+                <label>EquipmentDescription</label>
+            </div>
+            <div class="h-item" (click)="changeOrder('Alarmstatus')">
+                <label>Alarmstatus</label>
+            </div>
+            <div class="h-item" (click)="changeOrder('InputDate')">
+                <label>InputDate</label>
+            </div>
+            <div class="h-item" (click)="changeOrder('OutputDate')">
+                <label>OutputDate</label>
+            </div>
+            <div class="h-item">
+                <label>Remover</label>
+            </div>
+        </div>
+        <div class="row" *ngFor='let actedAlarm of actedAlarms'>
+            <div class="r-item">
+                <label>{{actedAlarm.alarmDescription}}</label>
+            </div>
+            <div class="r-item">
+                <label>{{actedAlarm.equipmentDescription}} </label>
+            </div>
+            <div class="r-item">
+                <label>{{actedAlarm.alarmStatus}}</label>
+            </div>
+            <div class="r-item">
+                <label>{{actedAlarm.inputDate}}</label>
+            </div>
+            <div class="r-item">
+                <label>{{actedAlarm.outputDate}}</label>
+            </div>
+            <div class="r-item">
+                <button (click)="delete(alarm)">Remover</button>
+            </div>
+        </div>
+    </div>
+</div>

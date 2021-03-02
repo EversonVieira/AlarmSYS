@@ -1,0 +1,59 @@
+<div class="register">
+    <div class="flex">
+        <div class="form-input">
+            <label>Description</label>
+            <input id="description"type="text" [(ngModel)]="model.description">
+        </div>
+    </div>
+    <div class="flex">
+        <div class="form-input">
+            <label>Classification</label>
+            <select id="type" aria-placeholder="Select one Classification" [(ngModel)]="model.id_Classification">
+                <option value =1>Baixo</option>
+                <option value =2>Médio</option>
+                <option value =3>Alto</option>
+            </select>
+        </div>
+        <div class="form-input">
+            <label>Equipment</label>
+            <select id="type" aria-placeholder="Select one equipment" [(ngModel)]="model.id_Equipment">
+                <option *ngFor="let equipment of equipments" [(value)]="equipment.id">{{equipment.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="flex">
+        <div class="form-buttons">
+            <button (click)="insert()">Registrar</button>
+        </div>
+    </div>
+    <div class="table">
+        <div class="header">
+            <div class="h-item">
+                <label>Description</label>
+            </div>
+            <div class="h-item">
+                <label>Classification</label>
+            </div>
+            <div class="h-item">
+                <label>Equipment</label>
+            </div>
+            <div class="h-item">
+                <label>Remover</label>
+            </div>
+        </div>
+        <div class="row" *ngFor='let alarm of alarms'>
+            <div class="r-item">
+                <label>{{alarm.description}}</label>
+            </div>
+            <div class="r-item">
+                <label>{{alarm.id_Classification}} </label>
+            </div>
+            <div class="r-item">
+                <label>{{alarm.id_Equipment}}</label>
+            </div>
+            <div class="r-item">
+                <button (click)="delete(alarm)">Remover</button>
+            </div>
+        </div>
+    </div>
+</div>

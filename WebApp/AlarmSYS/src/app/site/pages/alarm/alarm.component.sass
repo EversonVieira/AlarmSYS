@@ -1,0 +1,79 @@
+.flex
+    display: flex
+    flex-direction: row
+.register
+    background: #f3f3f3
+    border: 1px solid #f3f3f3
+    border-radius: 20px
+    width: 100%
+    height: 100%
+.form-input
+    margin: 20px
+    display: flex
+    align-items: flex-start
+    justify-items: center
+    flex-direction: column
+    padding: 10px
+    width: 300px
+    border-radius: 20px
+    border: 1px solid #ccc
+    outline: none
+    label
+        margin: 0 0 5px
+    input
+        min-width: 250px
+    select
+        min-width: 250px
+.form-buttons
+    margin: 20px
+    display: flex
+    align-items: center
+    justify-content: left
+    padding: 10px
+    width: 100%
+    border-radius: 20px
+    border: 1px solid #ccc
+    outline: none
+    button
+        width: 200px
+        height: 50px
+        border: 1px solid #f3f3f3
+        background: #aff8af
+        border-radius: 20px
+        font-weight: bold
+        color: #333 
+        outline: none
+        &:hover
+          cursor: pointer
+          background: #89be89
+.table
+    // margin: 0 0 0 20px
+    width: 100%
+    display: flex
+    border-radius: 20px
+    justify-content: center
+    align-items: flex-start
+    flex-direction: column
+    border: 1px solid #ccc
+    .header
+        display: flex
+        border-radius: 20px
+        justify-content: left
+        width: 100%
+        align-items: center
+        .h-item
+            padding: 15px
+            border-right: solid 1px #ccc
+            width: 100% 
+            border-bottom: solid 1px #ccc
+    .row
+        display: flex
+        border-radius: 20px
+        justify-content: left
+        align-items: center
+        width: 100%
+        .r-item
+            padding: 15px
+            border-right: solid 1px #ccc
+            width: 100%
+            min-height: 50px

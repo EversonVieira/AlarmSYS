@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ActedAlarmService\ActedAlarmService.csproj" />
+    <ProjectReference Include="..\AlarmService\AlarmService.csproj" />
+    <ProjectReference Include="..\AlarmSys.Core.Connection\AlarmSys.Core.Connection.csproj" />
+    <ProjectReference Include="..\AlarmSys.Core.Interfaces\AlarmSys.Core.Interfaces.csproj" />
+    <ProjectReference Include="..\AlarmSys.Core.Scopes\AlarmSys.Core.Scopes.csproj" />
+    <ProjectReference Include="..\AlarmSys.Core.Treaters\AlarmSys.Core.Treaters.csproj" />
+    <ProjectReference Include="..\EquipmentService\EquipmentService.csproj" />
+  </ItemGroup>
+
+
+</Project>

@@ -1,0 +1,68 @@
+<div class="register">
+    <div class="flex">
+        <div class="form-input">
+            <label>Name</label>
+            <input id="name" type="text" [(ngModel)]="model.name">
+        </div>
+        
+        <div class="form-input">
+            <label>Description</label>
+            <input id="description"type="text" [(ngModel)]="model.description">
+        </div>
+    </div>
+    <div class="flex">
+        <div class="form-input">
+            <label>SerialNumber</label>
+            <input id="serialNumber" type="number" [(ngModel)]="model.serialNumber">
+        </div>
+        <div class="form-input">
+            <label>Type</label>
+            <select id="type" aria-placeholder="Select one type" [(ngModel)]="model.id_Type">
+                <option value=1>Voltage</option>
+                <option value=2>Chain</option>
+                <option value=3>Oil</option>
+            </select>
+        </div>
+    </div>
+    <div class="flex">
+        <div class="form-buttons">
+            <button (click)="insert()">Registrar</button>
+        </div>
+    </div>
+    <div class="table">
+        <div class="header">
+            <div class="h-item">
+                <label>Name</label>
+            </div>
+            <div class="h-item">
+                <label>Description</label>
+            </div>
+            <div class="h-item">
+                <label>SerialNumber</label>
+            </div>
+            <div class="h-item">
+                <label>Type</label>
+            </div>
+            <div class="h-item">
+                <label>Remover</label>
+            </div>
+        </div>
+        <div class="row" *ngFor='let equipment of equipments'>
+            <div class="r-item">
+                <label>{{equipment.name}}</label>
+            </div>
+            <div class="r-item">
+                <label>{{equipment.description}}</label>
+            </div>
+            <div class="r-item">
+                <label>{{equipment.serialNumber}}</label>
+            </div>
+            <div class="r-item">
+                <label>{{equipment.type}}</label>
+            </div>
+            <div class="r-item">
+                <button (click)="delete(equipment)">Remover</button>
+            </div>
+        </div>
+    </div>
+</div>
