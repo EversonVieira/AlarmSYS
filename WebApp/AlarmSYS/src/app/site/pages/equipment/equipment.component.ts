@@ -22,9 +22,13 @@ export class EquipmentComponent implements OnInit {
 
     this.equipmentService.insert(this.model).subscribe(response => {
       console.log(response);
+      alert("Successful!");
 
       this.filter();
 
+    }, (error) => {
+      console.log(error);
+      alert("Error!");
     });
 
   }
@@ -42,7 +46,6 @@ export class EquipmentComponent implements OnInit {
   delete(equipment:Equipment){
     this.equipmentService.delete(equipment).subscribe((response:any)=>{
       console.log(response);
-
       this.filter();
     },error =>{
       console.log(error);

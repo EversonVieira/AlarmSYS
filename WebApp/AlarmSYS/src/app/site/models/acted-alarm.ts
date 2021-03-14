@@ -3,7 +3,7 @@ export class ActedAlarm {
     id_Alarm:number = 0;
     id_Status:number = 0;
     outputDate:Date;
-    inputDate:Date;
+    inputDate:Date = new Date();
     alarmStatus:string;
     alarmDescription:string;
     equipmentDescription:string;

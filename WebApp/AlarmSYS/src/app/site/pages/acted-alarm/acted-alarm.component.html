@@ -2,7 +2,7 @@
     <div class="flex">
         <div class="form-input">
             <label>Alarm</label>
-            <select id="type" aria-placeholder="Select one alarm" [(ngModel)]="model.id">
+            <select id="type" aria-placeholder="Select one alarm" [(ngModel)]="model.id_Alarm">
                 <option *ngFor="let alarm of alarms" [(value)]="alarm.id">{{alarm.description}}</option>
             </select>
         </div>

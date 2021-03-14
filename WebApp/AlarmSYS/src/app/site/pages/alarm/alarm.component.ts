@@ -50,6 +50,9 @@ export class AlarmComponent implements OnInit {
       console.log(response);
 
       this.filterAlarms();
+    }, error => {
+      alert("Error!");
+      console.log(error);
     })
 
   }
@@ -57,7 +60,7 @@ export class AlarmComponent implements OnInit {
   delete(alarm){
     this.alarmService.delete(alarm).subscribe((response:any)=>{
       console.log(response);
-
+      alert("Successful!");
       this.filterAlarms();
     },error =>{
       console.log(error);

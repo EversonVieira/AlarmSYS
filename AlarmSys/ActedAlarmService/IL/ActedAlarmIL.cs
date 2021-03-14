@@ -46,7 +46,7 @@ namespace ActedAlarmService
             {
                 this._Notifications.Add(new Notification
                 {
-                    field = "Id",
+                    field = "InputDate",
                     value = actedAlarm.Id,
                     message = "InputDate should be informed"
                 });

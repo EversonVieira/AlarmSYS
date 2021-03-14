@@ -58,15 +58,20 @@ export class ActedAlarmComponent implements OnInit {
     console.log(this.model);
     this.actedAlarmService.insert(this.model).subscribe((response:any)=>{
       console.log(response);
-
+      alert("Successful!");
       this.filterAlarms();
+    }, error => {
+      alert("Error!");
+      console.log(error);
     })
   }
 
   delete(actedAlarm:ActedAlarmComponent){
     this.actedAlarmService.delete(actedAlarm).subscribe((response:any)=>{
       console.log(response);
+      alert("Successful!");
     },error => {
+      alert("Error!");
       console.log(error);
       alert("This register can't be removed.");
     })
@@ -93,5 +98,6 @@ export class ActedAlarmComponent implements OnInit {
       this.actedAlarms = this.rawActedAlarmsList.sort((a,b) => a.outputDate < b.outputDate ? 1:-1)
     }
    console.log(this.actedAlarms);
+   alert("Successful!");
   }
 }
