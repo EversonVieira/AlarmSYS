@@ -1,0 +1,48 @@
+There are 3 folders who we need to use to put this application Online.
+We need to have
+.Net core 3.1 SDK
+Node (Last version)
+Sql Server
+
+
+AlarmSys is our API.
+
+DataBase is where i put the Scripts to put the API - DataBase online,
+there's only one script here.
+
+WebApp is our WebApplication made with Angular11, we need to run the powershell/cmd/terminal
+on the folder where we have the package.json folder and then put "NPM I" for install the dependencies and then
+use NG Serve or Npm Start to Run the application.
+
+
+CONFIGURATING
+
+We need to setup our database as first step, so, create a DataBaseSchema in some SQL Server instance and then, create an
+SQL Login account (You need to use this to use the API with Cross origin), make sure the instance support this.
+
+So, after created the schema and the SQL Account, give the privilegies to this account and run the script stored in /DataBase/script.sql in
+the created schema.
+
+After this, go to the AlarmSys application and then find for AppSettings.Json and then change the connectionString giving the parameters of 
+your current string.
+
+- Extra config
+
+If you want to put off the white space between the Header/application and the WebBrowser of the WebApplication you need to go to the terminal
+and add ng add @angular/material.
+
+And then Type Yes, Yes, Yes. And then you'll have the Application running without this white-space.
+
+I don't know why, but NPM doesn't storage this configuration, so we need to do it to remove this "white space".
+
+If you have any question or doubt just call me. it will be a pleasure to help everyone to run this.
+
+This is my Number: + 55 81 9 8919-9827. 
+
+You can call me at any moment and send me a message in Whatsapp.
+
+Thank you.
+
+Best regards.
+
+Everson Vieira.
